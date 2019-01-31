@@ -1,0 +1,35 @@
+{
+  "name": "news-scraper",
+  "version": "1.0.0",
+  "description": "A web site scraper with note-taking capability",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eghove/news-scraper.git"
+  },
+  "author": "Eric Hove",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eghove/news-scraper/issues"
+  },
+  "homepage": "https://github.com/eghove/news-scraper#readme",
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.4.8"
+  }
+}
