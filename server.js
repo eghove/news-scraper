@@ -30,7 +30,7 @@ app.use(express.static('public'));
 // Connect to the MongoDB
 // below variable used so it can deploy to heroku and continue to work locally.
 var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadlines';
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // ROUTES
 
