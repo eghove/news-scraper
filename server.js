@@ -7,13 +7,6 @@ var express = require('express');
 // require mongoose for mongoDB manipulation
 var mongoose = require('mongoose');
 
-// load the scraping tools
-var axios = require('axios');
-var cheerio = require('cheerio');
-
-// require all models (commented out until there are models there)
-// var db = require('./models');
-
 // set up the port
 var PORT = process.env.PORT || 3000;
 
@@ -33,6 +26,7 @@ var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadlines
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // ROUTES
+require('./controllers/apiRoutes')(app);
 
 // Start the server
 app.listen(PORT, function () {

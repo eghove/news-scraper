@@ -38,11 +38,15 @@ var ArticleSchema = new Schema({
   read: {
     type: Boolean,
     default: false
+  },
+  // field that will store the date scraped
+  dateScraped: {
+    type: Date
   }
 });
 
 // create the model from the above schema
-var Article = mongoose('Article', ArticleSchema);
+var Article = mongoose.model('Article', ArticleSchema);
 
 // export the Article model
 module.exports = Article;
