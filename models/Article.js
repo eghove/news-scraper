@@ -44,5 +44,5 @@ var ArticleSchema = new Schema({
 // create the model from the above schema
 var Article = mongoose('Article', ArticleSchema);
 
-// expore the Article model
+// export the Article model
 module.exports = Article;
