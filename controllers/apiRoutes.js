@@ -16,10 +16,10 @@ module.exports = function (app) {
     axios.get('https://www.vox.com/').then(function (response) {
       // load that data into cherio and save it to $ for a shorthand
       var $ = cheerio.load(response.data);
-      // save an empty result object
-      var results = [];
       // setting up the cherio element
       $('div.c-entry-box--compact--article').each(function (i, element) {
+        // save an empty result object
+        var results = {};
         // grab the link
         var link = $(element).children('a').attr('href');
         // grab the article title
@@ -28,15 +28,27 @@ module.exports = function (app) {
         var byline = $(element).children('div').children('div.c-byline').children('span').children('a').text();
         // grab the summary
         var summary = $(element).children('div').children('p.p-dek').text();
-
-        results.push({
-          title: title,
-          summary: summary,
-          byline: byline,
-          link: link
-        });
+        // putting it all in the results object
+        results.title = title;
+        results.byline = byline;
+        results.summary = summary;
+        results.link = link;
+        // create a new Article using the `results` object build from scraping
+        db.Article.create(results)
+          .then(function (dbArticle) {
+            console.log(dbArticle);
+          })
+          .catch(function (err) {
+            // log the error if needed
+            console.log(err);
+          });
+        // results.push({
+        //   title: title,
+        //   summary: summary,
+        //   byline: byline,
+        //   link: link
+        // });
       });
-      console.log(results);
     })
     res.send('Scraped!')
   })

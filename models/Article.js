@@ -17,7 +17,8 @@ var ArticleSchema = new Schema({
   // field to store the link of the article
   link: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   // field to store the summary of the article
   summary: {
