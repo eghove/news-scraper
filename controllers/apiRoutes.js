@@ -77,4 +77,13 @@ module.exports = function (app) {
         res.json(err);
       })
   })
+
+  // POST route for creating & updating notes
+  app.post('/articles/:id', function (req, res) {
+    // create a new note and pass the req.body into it
+    db.Note.create(req.body)
+      .then(function (dbNote) {
+        
+      })
+  })
 }
