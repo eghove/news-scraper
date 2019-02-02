@@ -18,11 +18,22 @@ module.exports = function (app) {
       var $ = cheerio.load(response.data);
       // save an empty result object
       var results = [];
-      // trying to grab the article title
+      // setting up the cherio element
       $('div.c-entry-box--compact--article').each(function (i, element) {
-        var data = $(element).text();
+        // grab the link
+        var link = $(element).children('a').attr('href');
+        // grab the article title
+        var title = $(element).children('div').children('h2').text();
+        // grab the article byline
+        var byline = $(element).children('div').children('div.c-byline').children('span').children('a').text();
+        // grab the summary
+        var summary = $(element).children('div').children('p.p-dek').text();
+
         results.push({
-          data: data
+          title: title,
+          summary: summary,
+          byline: byline,
+          link: link
         });
       });
       console.log(results);

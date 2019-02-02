@@ -22,12 +22,12 @@ var ArticleSchema = new Schema({
   // field to store the summary of the article
   summary: {
     type: String,
-    required: true
+    default: 'None.'
   },
   // field to store byline
   byline: {
     type: String,
-    required: true
+    default: 'None.'
   },
   // field that stores a Note id
   note: {
