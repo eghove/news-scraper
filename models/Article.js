@@ -42,7 +42,8 @@ var ArticleSchema = new Schema({
   },
   // field that will store the date scraped
   dateScraped: {
-    type: Date
+    type: Date,
+    default: Date.now()
   }
 });
 
