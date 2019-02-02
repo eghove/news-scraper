@@ -60,6 +60,21 @@ module.exports = function (app) {
         // if an error occurred, send it to the cliend
         res.json(err);
       })
-  })
+  });
 
+  // GET route for returning just one document from the Articles collection
+  app.get('/articles/:id', function (req, res) {
+    // use the id parameter to query the database
+    db.Article.findOne({ _id: req.params.id })
+      // and populate all notes with which it is associated
+      .populate('note')
+      .then(function (dbArticle) {
+        // if the query was succcessful, send it to the client as a JSON
+        res.json(dbArticle);
+      })
+      .catch(function (err) {
+        // if the query failed, send the error back to the client
+        res.json(err);
+      })
+  })
 }
