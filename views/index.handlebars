@@ -12,31 +12,37 @@
       </div>
     </div>
   </div>
+</div>
 
-  {{!-- SPACER --}}
+{{!-- SPACER --}}
 
-  <br />
+<br />
 
-  <br />
+<br />
 
 
 
-  {{#each article}}
+{{#each article}}
+<div class="container">
   <div class="row">
     <div class="col-md-8">
-      <div class="card" data-article-id="{{this._id}}">
+      <div class="card article" data-article-id="{{this._id}}">
         <div class="card-body">
           <h4 class="card-title">{{this.title}} </h3>
             <p class="byline">By: {{this.byline}}</p>
             <hr>
             <p class="summary">{{this.summary}}</p>
+            <a href="{{this.link}}" target="_blank">Link to Article</a>
             <p class="date-scraped">Date Scraped: {{this.dateScraped}}</p>
         </div>
       </div>
     </div>
+      {{!-- hook for the note-display --}}
+      <div class="col-md-4 note-display">
+
+      </div>
+
   </div>
-  <br />
-  {{/each}}
-
-
 </div>
+<br />
+{{/each}}
