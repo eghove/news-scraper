@@ -9,6 +9,7 @@ var db = require('../models');
 module.exports = function (app) {
   // GET route that loads the main page
   app.get('/', function (req, res) {
+    // right now, it just renders the handlebars
     res.render('index');
   })
 
