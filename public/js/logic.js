@@ -21,17 +21,12 @@ $(document).ready(function () {
     // empty the note display
     $('.note-display').empty();
     let thisID = $(this).attr('data-article-id');
+
     // find the selector for note-display
     let noteCard = $(this).parent().parent().find('div.note-display')
-    // let noteCard = $(this).children('div.row').find('div.note-display');
     // build the card and card-body
     let card = $('<div class = "card">');
     let cardBody = $('<div class = "card-body">')
-    // append card-body to card
-    // card = card.append(cardBody);
-    // append modified card to noteCard
-    // noteCard.append(card);
-    
     // AJAX call for the article
     $.ajax({
       method: 'GET',
@@ -45,9 +40,27 @@ $(document).ready(function () {
         let noteBody = $('<textarea id = "body-input" name = "body">')
         // a button to the submit the new note, with the id of article save to it
         let noteButton = $("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+        // append the above three to the cardBody
         cardBody = cardBody.append(noteTitle).append(noteBody).append(noteButton);
+        // append the new cardBody to card
         card = card.append(cardBody);
+        // append the new card to the noteCard selector
         noteCard.append(card);
-      })
+
+        // if there's a note in the article
+        if (data.note) {
+          // place the totle of the note in the title input
+          $('#title-input').val(data.note.title);
+          // place the body of the note in the body of the textarea
+          $('#body-input').val(data.note.body);
+        }
+      });
+  });
+
+  // event listener for the save note button
+  $('#savenote').on('click', function () {
+    // get the id associated with the note
+    let thisID = $(this).attr('data-id');
+    console.log('thisID');
   })
 });
