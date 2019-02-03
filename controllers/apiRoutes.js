@@ -7,6 +7,11 @@ var cheerio = require('cheerio');
 var db = require('../models');
 
 module.exports = function (app) {
+  // GET route that loads the main page
+  app.get('/', function (req, res) {
+    res.render('index');
+  })
+
   // GET route that performs the scraping of Vox.com
   app.get('/scrape', function (req, res) {
     // grab the body of the html with axios

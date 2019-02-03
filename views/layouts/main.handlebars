@@ -1,0 +1,33 @@
+{{!-- main.handlers file for Vox.com news scraper --}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    {{!-- CSS LINKS --}}
+    {{!-- Link to reset css --}}
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/reset.css" />
+    {{!-- Link to google fonts --}}
+    {{!-- <link href="https://fonts.googleapis.com/css?family=Adamina" rel="stylesheet"> --}}
+    {{!-- Link to bootstrap --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    {{!-- Link to the newscraper custom css --}}
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/custom.css" />
+    <title>Vox.com News Scraper</title>
+
+
+    {{!-- JAVASCRIPT --}}
+    {{!-- Link to jQuery --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {{!-- Link to the client-side logic --}}
+    <script src="./js/logic.js"></script>
+
+</head>
+
+<body>
+    {{!-- pass in the handlebar body --}}
+    {{{ body }}}
+</body>
+
+</html>
