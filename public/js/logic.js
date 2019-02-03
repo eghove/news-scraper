@@ -56,11 +56,27 @@ $(document).ready(function () {
         }
       });
   });
+});
 
-  // event listener for the save note button
-  $('#savenote').on('click', function () {
-    // get the id associated with the note
-    let thisID = $(this).attr('data-id');
-    console.log('thisID');
+// event listener for the save note button, outside of the initial document onload
+$(document).on('click', '#savenote', function () {
+  // get the id associated with the note
+  let thisID = $(this).attr('data-id');
+  console.log('This ID: ' + thisID);
+  $.ajax({
+    method: 'POST',
+    url: '/articles/' + thisID,
+    data: {
+      title: $('#title-input').val(),
+      body: $('#body-input').val()
+    }
   })
+    .then(function (data) {
+      // log the response
+      console.log(data);
+      // empty the note display
+      $('.note-display').empty();
+    });
+  // empty the note display
+  $('.note-display').empty();
 });
