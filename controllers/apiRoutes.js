@@ -9,7 +9,16 @@ var db = require('../models');
 module.exports = function (app) {
   // GET route that loads the main page
   app.get('/', function (req, res) {
-    res.render('index');
+    db.Article.find({})
+      .then(function (dbArticle) {
+        var hbarsObj = {
+          article: dbArticle
+        };
+        // log the result server side
+        console.log(hbarsObj);
+        // right now, it just renders the handlebars
+        res.render('index', hbarsObj);
+      })
   })
 
   // GET route that performs the scraping of Vox.com
@@ -42,8 +51,8 @@ module.exports = function (app) {
           });
       });
     })
-    // let the client know the scraping is done. Probably want to change this to a status code at some point.
-    res.send('Scraped!')
+    // let the client know the scraping is done.
+    res.status(200).end();
   });
 
   // GET route for getting all Articles from the database
