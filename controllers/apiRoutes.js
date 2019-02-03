@@ -3,9 +3,6 @@
 var axios = require('axios');
 var cheerio = require('cheerio');
 
-// load mongoose
-var mongoose = require('mongoose');
-
 // require all models
 var db = require('../models');
 
@@ -19,20 +16,16 @@ module.exports = function (app) {
       // setting up the cherio element
       $('div.c-entry-box--compact--article').each(function (i, element) {
         // save an empty result object
-        var results = {};
+        const results = {};
         // grab the link
-        var link = $(element).children('a').attr('href');
+        results.link = $(element).children('a').attr('href');
         // grab the article title
-        var title = $(element).children('div').children('h2').text();
+        results.title = $(element).children('div').children('h2').text();
         // grab the article byline
-        var byline = $(element).children('div').children('div.c-byline').children('span').children('a').text();
+        results.byline = $(element).children('div').children('div.c-byline').children('span').children('a').text();
         // grab the summary
-        var summary = $(element).children('div').children('p.p-dek').text();
-        // putting it all in the results object
-        results.title = title;
-        results.byline = byline;
-        results.summary = summary;
-        results.link = link;
+        results.summary = $(element).children('div').children('p.p-dek').text();
+
         // create a new Article using the `results` object built from scraping
         db.Article.create(results)
           .then(function (dbArticle) {
@@ -83,7 +76,14 @@ module.exports = function (app) {
     // create a new note and pass the req.body into it
     db.Note.create(req.body)
       .then(function (dbNote) {
-        
+        return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true })
       })
-  })
+      .then(function (dbArticle) {
+        // if able to successfully update an article, send it back to the cliend
+      })
+      .catch(function (err) {
+        // if an error occurred, send it to the cliend
+        res.json(err);
+      });
+  });
 }
