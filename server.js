@@ -14,11 +14,19 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 // CONFIGURE MIDDLEWARE
+
 // parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // make 'public' a static folder
 app.use(express.static('public'));
+
+// SET HANDLEBARS as a variable called hbars
+var hbars = require('express-handlebars');
+// initiate handlebars, tell it where to find main.handlebars
+app.engine('handlebars', hbars({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 // Connect to the MongoDB
 // below variable used so it can deploy to heroku and continue to work locally.
