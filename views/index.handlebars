@@ -19,5 +19,22 @@
 
     <br />
 
+  
+
+    {{#each article}}
+    <div class = "row">
+      <div class = "col-md-7">
+        <div class = "card">
+          <h3 class = "card-title">{{this.title}} </h3>
+          <hr>
+          <p class = "byline">By: {{this.byline}}</p>
+          <hr>
+          <p class = "summary">{{this.summary}}</p>
+          <p class = "date-scraped"> stuff </p>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
     
 </div>
