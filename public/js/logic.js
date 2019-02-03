@@ -22,7 +22,8 @@ $(document).ready(function () {
     $('.note-display').empty();
     let thisID = $(this).attr('data-article-id');
     // find the selector for note-display
-    let noteCard = $(this).children('div.row').find('div.note-display');
+    let noteCard = $(this).parent().parent().find('div.note-display')
+    // let noteCard = $(this).children('div.row').find('div.note-display');
     // build the card and card-body
     let card = $('<div class = "card">');
     let cardBody = $('<div class = "card-body">')
