@@ -1,8 +1,6 @@
 /* eslint-disable semi */
 /* eslint-disable no-undef */
 $(document).ready(function () {
-  console.log('Logic.js is loaded!');
-
   // event listener for New Scrape button
   $('#scraper').on('click', function (event) {
     // Send the GET request to activate the scraper
@@ -10,7 +8,7 @@ $(document).ready(function () {
       type: 'GET'
     }).then(
       function () {
-        // reload the page (this doesn't seem to be working)
+        // reload the page (this doesn't seem to be working on the client side, so moved it to server side)
         location.reload();
       }
     );
@@ -33,12 +31,9 @@ $(document).ready(function () {
       url: '/articles/' + thisID
     })
       .then(function (data) {
-        console.log(data);
         // an input to enter a new title for the note
-        // let noteTitle = $('<input id = "title-input" name = "title" >')
         let noteTitle = $('<div class = "form-group"><label>Note Title</label><textarea class = "form-control" id = "title-input" rows = "1"></textarea></div>');
         // an input the enter the body of the note
-        // let noteBody = $('<textarea id = "body-input" name = "body">')
         let noteBody = $('<div class = "form-group"><label>Note Body</label><textarea class = "form-control" id = "body-input" rows = "2"></textarea></div>');
         // a button to the submit the new note, with the id of article save to it
         let noteButton = $("<button type = 'button' class = 'btn btn-success' data-id='" + data._id + "' id='savenote'>Save Note</button>");

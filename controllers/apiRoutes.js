@@ -15,8 +15,8 @@ module.exports = function (app) {
           article: dbArticle
         };
         // log the result server side
-        console.log(hbarsObj);
-        // right now, it just renders the handlebars
+        // console.log(hbarsObj);
+        // Render handlebars, pass in the hbarsObj
         res.render('index', hbarsObj);
       })
   })
@@ -43,7 +43,7 @@ module.exports = function (app) {
         // create a new Article using the `results` object built from scraping
         db.Article.create(results)
           .then(function (dbArticle) {
-            console.log(dbArticle);
+            // console.log(dbArticle);
           })
           .catch(function (err) {
             // log the error if needed
@@ -51,8 +51,8 @@ module.exports = function (app) {
           });
       });
     })
-    // let the client know the scraping is done.
-    res.status(200).end();
+    // call the index '/' route to reload.
+    res.redirect('/');
   });
 
   // GET route for getting all Articles from the database
