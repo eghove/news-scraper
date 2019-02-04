@@ -9,7 +9,7 @@ var db = require('../models');
 module.exports = function (app) {
   // GET route that loads the main page
   app.get('/', function (req, res) {
-    db.Article.find({})
+    db.Article.find().sort({ dateScraped: -1 })
       .then(function (dbArticle) {
         var hbarsObj = {
           article: dbArticle
