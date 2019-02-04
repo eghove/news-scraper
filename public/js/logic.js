@@ -35,11 +35,13 @@ $(document).ready(function () {
       .then(function (data) {
         console.log(data);
         // an input to enter a new title for the note
-        let noteTitle = $('<input id = "title-input" name = "title" >')
+        // let noteTitle = $('<input id = "title-input" name = "title" >')
+        let noteTitle = $('<div class = "form-group"><label>Note Title</label><textarea class = "form-control" id = "title-input" rows = "1"></textarea></div>');
         // an input the enter the body of the note
-        let noteBody = $('<textarea id = "body-input" name = "body">')
+        // let noteBody = $('<textarea id = "body-input" name = "body">')
+        let noteBody = $('<div class = "form-group"><label>Note Body</label><textarea class = "form-control" id = "body-input" rows = "2"></textarea></div>');
         // a button to the submit the new note, with the id of article save to it
-        let noteButton = $("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+        let noteButton = $("<button type = 'button' class = 'btn btn-success' data-id='" + data._id + "' id='savenote'>Save Note</button>");
         // append the above three to the cardBody
         cardBody = cardBody.append(noteTitle).append(noteBody).append(noteButton);
         // append the new cardBody to card
@@ -62,7 +64,7 @@ $(document).ready(function () {
 $(document).on('click', '#savenote', function () {
   // get the id associated with the note
   let thisID = $(this).attr('data-id');
-  console.log('This ID: ' + thisID);
+  // console.log('This ID: ' + thisID);
   $.ajax({
     method: 'POST',
     url: '/articles/' + thisID,
@@ -73,7 +75,7 @@ $(document).on('click', '#savenote', function () {
   })
     .then(function (data) {
       // log the response
-      console.log(data);
+      // console.log(data);
       // empty the note display
       $('.note-display').empty();
     });

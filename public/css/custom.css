@@ -9,3 +9,7 @@ body {
 .date-scraped {
   font-style: italic
 }
+
+.jumbotron {
+  padding: 15px
+}
