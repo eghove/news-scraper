@@ -1,5 +1,5 @@
 body {
-  background-color: blue;
+  background-color: #6d8891; 
   font-family: 'Roboto', sans-serif;
 }
 
@@ -12,5 +12,10 @@ body {
 }
 
 .jumbotron {
+  background-color: #dfe6ea;
   padding: 15px
+}
+
+.card {
+  background-color: #dfe6ea
 }
