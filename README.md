@@ -18,3 +18,7 @@ Vox.com News Scraper uses the following technologies:
 * Express.
 
 ## What Does Vox.com News Scraper Look Like?
+
+![Main Screen](https://eghove.github.io/img/portfolio/vox-scrape-main.PNG "Main Screen")
+
+![With Notes](https://eghove.github.io/img/portfolio/vox-scrape-note.PNG "Main Screen with Notes")
